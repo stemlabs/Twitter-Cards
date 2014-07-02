@@ -9,28 +9,29 @@
 
 <body ng-controller="demoController">
 
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <div class="btn-group">
-                        <input type="text" ng-model="hashTag" />
-                        <button ng-click="sync()">Sync</button>
-                    </div>
-        </nav>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <div class="btn-group">
+                    <input type="text" ng-model="hashTag" />
+                    <button ng-click="sync()">Sync</button>
+                </div>
+    </nav>
 
-        <h1>Hello</h1>
-        {{ errorMessage }}
+    <h1>Hello</h1>
+    {{ errorMessage }}
 
-        <div >
+    <div>
 
-            <div ng-container="">
-                <div class="row">
-                    <div ng-repeat="tweet in tweets">
-                        <div class="col-sm-6 col-md-4 col-lg-2">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">{{ tweet.text }}</div>
-                                <div class="panel-body"><strong>User:</strong> {{ tweet.source }}</div>
+        <div ng-container="">
+            <div class="row">
+                <div ng-repeat="tweet in tweets">
+                    <div class="col-sm-6 col-md-4 col-lg-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">{{ tweet.text }}</div>
+                            <div class="panel-body">
+                                <a href="{{ tweet.source }}">more...</a>
                             </div>
                         </div>
                     </div>
@@ -77,20 +78,8 @@
                     });
 
                 }]);
-            
+
         </script>
 
 </body>
 </html>
-<div ng-container="">
-    <div class="row">
-        <div ng-repeat="tweet in tweets">
-            <div class="col-sm-6 col-md-4 col-lg-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">{{ tweet.text }}</div>
-                    <div class="panel-body">User: {{ tweet.source }}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
