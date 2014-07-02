@@ -20,8 +20,9 @@
         </nav>
 
         <h1>Hello</h1>
+        {{ errorMessage }}
 
-        <div class="ng-container">
+        <div >
             <div ng-repeat="tweet in tweets">
                 {{tweet.source}}  {{tweet.text}}
             </div>
@@ -54,8 +55,18 @@
                             });
                         });
                     }
-                }]);
 
+
+                    dataService.addSource(twitterDataService);
+                    dataService.connect(function (results) {
+                        //sync after the initial response
+                        for (var result in results) {
+                            $scope.$apply($scope[result] = results[result]);
+                        }
+                    });
+
+                }]);
+            
         </script>
 
 </body>
