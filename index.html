@@ -20,6 +20,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.js"></script>
     <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" data-require="bootstrap-css@3.1.1" data-semver="3.1.1" />
+    <!--
+    <script src="TwitterDataService.js"></script>
+
+    <script src="js/app.js"></script>
+
+    <script src="js/controllers.js"></script>
+
+        -->
+
 </head>
 <body ng-controller="demoController">
     <div ng-show="menu == 'main'">
@@ -106,6 +115,64 @@
             <button class="btn btn-default" ng-click="menu = 'main'">Cancel</button>
         </div>
     </div>
+
+
+
+  <!--  <body ng-controller="pageController" style="margin:5px;">
+
+        <div>
+
+            <div class="page-header">
+
+                <h1>Twitter<span class="badge">{{tweets.length}}</span></h1>
+
+            </div>
+
+            <div id="errorMessage" ng-bind="errorMessage" class="alert">
+
+            </div>
+
+
+
+            <div id="workingZone">
+
+                <label>Hashtags:</label>
+
+                <div class="navbar-form">
+
+                    <div class="form-group">
+
+                        <input class="form-control" type="text" placeholder="hashtags" ng-model="hashTags" />
+
+                    </div>
+
+                    <button class="btn btn-success" ng-click="sync();">Filter</button>
+
+                </div>
+
+
+
+                <div>
+
+                    <ul class="list-group">
+
+                        <li class="list-group-item" ng-repeat="tweet in tweets">
+
+                            <div class="text-success h3"><a href="{{tweet.source}}">{{tweet.text}}</a></div>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+      -->
 
     <script src="https://code.jquery.com/jquery-2.0.3.min.js" data-require="jquery@*" data-semver="2.0.3"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" data-require="bootstrap@3.1.1" data-semver="3.1.1"></script>
