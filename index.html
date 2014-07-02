@@ -23,9 +23,20 @@
         {{ errorMessage }}
 
         <div >
-            <div ng-repeat="tweet in tweets">
-                {{tweet.source}}  {{tweet.text}}
+
+            <div ng-container="">
+                <div class="row">
+                    <div ng-repeat="tweet in tweets">
+                        <div class="col-sm-6 col-md-4 col-lg-2">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">{{ tweet.text }}</div>
+                                <div class="panel-body"><strong>User:</strong> {{ tweet.source }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
 
 
@@ -71,3 +82,15 @@
 
 </body>
 </html>
+<div ng-container="">
+    <div class="row">
+        <div ng-repeat="tweet in tweets">
+            <div class="col-sm-6 col-md-4 col-lg-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">{{ tweet.text }}</div>
+                    <div class="panel-body">User: {{ tweet.source }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
