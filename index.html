@@ -9,47 +9,54 @@
 
 <body ng-controller="demoController">
 
-    <h1>Hello</h1>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <div class="btn-group">
+                        <input type="text" ng-model="hashTag" />
+                        <button ng-click="sync()">Sync</button>
+                    </div>
+        </nav>
 
-    <div class="ng-container">
+        <h1>Hello</h1>
+
+        <div class="ng-container">
             <div ng-repeat="tweet in tweets">
                 {{tweet.source}}  {{tweet.text}}
             </div>
         </div>
-    <div class="btn-group">
-        <input type="text" ng-model="hashTag" />
-        <button ng-click="sync()">Sync</button>
-    </div>
 
-    <script src="https://code.jquery.com/jquery-2.0.3.min.js" data-require="jquery@*" data-semver="2.0.3"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" data-require="bootstrap@3.1.1" data-semver="3.1.1"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js" data-require="angular.js@1.2.17" data-semver="1.2.17"></script>
-    <script src="//acdccdn.blob.core.windows.net/cdn/ajax/acdc/0.3/AngularCloudDataConnector.js"></script>
-    <script src="//acdccdn.blob.core.windows.net/cdn/ajax/acdc/0.3/Providers/TwitterService.js"></script>
 
-    <script>
-        var app = angular.module('demoApp', ['DataModule', 'TwitterDataModule']);
-        app.controller('demoController', ['$scope', 'dataService', 'twitterDataService',
-            function ($scope, dataService, twitterDataService) {
-                $scope.sync = function () {
-                    twitterDataService.HashTag = $scope.hashTag;
+        <script src="https://code.jquery.com/jquery-2.0.3.min.js" data-require="jquery@*" data-semver="2.0.3"></script>
+        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" data-require="bootstrap@3.1.1" data-semver="3.1.1"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js" data-require="angular.js@1.2.17" data-semver="1.2.17"></script>
+        <script src="//acdccdn.blob.core.windows.net/cdn/ajax/acdc/0.3/AngularCloudDataConnector.js"></script>
+        <script src="//acdccdn.blob.core.windows.net/cdn/ajax/acdc/0.3/Providers/TwitterService.js"></script>
 
-                    $scope.errorMessage = 'Loading...';
+        <script>
+            var app = angular.module('demoApp', ['DataModule', 'TwitterDataModule']);
+            app.controller('demoController', ['$scope', 'dataService', 'twitterDataService',
+                function ($scope, dataService, twitterDataService) {
+                    $scope.sync = function () {
+                        twitterDataService.HashTag = $scope.hashTag;
 
-                    dataService.sync(function () {
-                        dataService.getEntries(function (results) {
-                            // Update view
-                            $scope.errorMessage = '';
+                        $scope.errorMessage = 'Loading...';
 
-                            for (var result in results) {
-                                $scope.$apply($scope[result] = results[result]);
-                            }
+                        dataService.sync(function () {
+                            dataService.getEntries(function (results) {
+                                // Update view
+                                $scope.errorMessage = '';
+
+                                for (var result in results) {
+                                    $scope.$apply($scope[result] = results[result]);
+                                }
+                            });
                         });
-                    });
-                }
-            }]);
+                    }
+                }]);
 
-    </script>
+        </script>
 
 </body>
 </html>
