@@ -12,12 +12,14 @@
     <h1>Hello</h1>
 
     <div class="ng-container">
-        <div ng-repeat="tweet in tweets">
-            {{tweet.source}}  {{tweet.text}}
+            <div ng-repeat="tweet in tweets">
+                {{tweet.source}}  {{tweet.text}}
+            </div>
         </div>
+    <div class="btn-group">
+        <input type="text" ng-model="hashTag" />
+        <button ng-click="sync()">Sync</button>
     </div>
-    <input type="text" ng-model="hashTag" />
-    <button ng-click="sync()"></button>
 
     <script src="https://code.jquery.com/jquery-2.0.3.min.js" data-require="jquery@*" data-semver="2.0.3"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" data-require="bootstrap@3.1.1" data-semver="3.1.1"></script>
@@ -35,24 +37,18 @@
                     $scope.errorMessage = 'Loading...';
 
                     dataService.sync(function () {
-
                         dataService.getEntries(function (results) {
-
                             // Update view
-
                             $scope.errorMessage = '';
 
                             for (var result in results) {
-
                                 $scope.$apply($scope[result] = results[result]);
-
                             }
-
                         });
-                    
-                    
                     });
-                }]);
+                }
+            }]);
+
     </script>
 
 </body>
