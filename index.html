@@ -52,7 +52,7 @@
                                     </p>
                                 </div>
                                 <div>
-                                    Hashtags: #{{tweet.entities.hashtags.text}}
+                                    Hashtags: <span ng-repeat="tag in tweet.entities.hashtags" ng-click="hashTag=tag.text">#{{tag.text}}</span>
                                 </div>
                             </div>
                         </div>
