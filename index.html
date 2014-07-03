@@ -8,7 +8,6 @@
 
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
-
             <div class="navbar-header">
                 <a class="navbar-brand" href="#"> <font color="4099FF">Twitter Cards</font> </a>
                 <button id="button-nav-group" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -16,14 +15,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-
                 </button>
             </div>
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <div class="btn-group" style="position:relative;top:12px">
                     <input type="text" ng-model="hashTag" />
-                     <button ng-click="sync()"><font color="4099FF"><span class="glyphicon glyphicon-refresh"></span> Sync</font></button>
+                    <button ng-click="sync()"><font color="4099FF"><span class="glyphicon glyphicon-refresh"></span> Sync</font></button>
                 </div>
     </nav>
 
@@ -31,7 +29,6 @@
     {{ errorMessage }}
 
     <div>
-
         <div ng-container="">
             <div class="row">
                 <div ng-repeat="tweet in tweets">
@@ -50,14 +47,13 @@
                                 </div>
                                 <div>
                                     Hashtags: <span ng-repeat="tag in tweet.entities.hashtags" ng-click="hashTag=tag.text">#{{tag.text}} </span>
-                                                              </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
 
         <script src="https://code.jquery.com/jquery-2.0.3.min.js" data-require="jquery@*" data-semver="2.0.3"></script>
         <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" data-require="bootstrap@3.1.1" data-semver="3.1.1"></script>
@@ -85,7 +81,6 @@
                             });
                         });
                     }
-
 
                     dataService.addSource(twitterDataService);
                     dataService.connect(function (results) {
