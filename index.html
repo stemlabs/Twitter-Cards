@@ -42,13 +42,12 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">{{ tweet.text }}</div>
                             <div class="panel-body">
-                                <a href="{{ tweet.source }}">more...</a>
+                                <a ng-href="{{ tweet.user.url }}">By {{tweet.user.name}}</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
 
 
