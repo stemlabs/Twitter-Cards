@@ -34,21 +34,22 @@
                 <div ng-repeat="tweet in tweets">
                     <div class="col-sm-6 col-md-4 col-lg-2">
                         <div class="panel panel-default">
-                            <div class="panel-heading" style="background-color: #75b5ff">{{ tweet.text }}</div>
-                            <div class="panel-body">
+                            <div class="panel-heading" style="background-color: #75b5ff">
                                 <p>
                                     <a class="text-left" ng-href="{{ tweet.user.url }}"><font color="24558F">By</font> {{tweet.user.name}} </a>
                                     as {{tweet.user.screen_name}}
                                 </p>
+                            </div>
+                            <div class="panel-body">
+                                {{tweet.text}}
+                            </div>
+                            <div class="panel-footer">
                                 <div>
                                     <p class="text-left">
                                         <font color="24558F">Location:</font> {{tweet.user.location}}
                                     </p>
                                 </div>
-                                <div>
-                                    <font color="24558F"> Hashtags:</font> <span ng-repeat="tag in tweet.entities.hashtags" ng-click="hashTag=tag.text">#{{tag.text}} </span>
-                                </div>
-                            </div>
+                                <font color="24558F"> Hashtags:</font><span ng-repeat="tag in tweet.entities.hashtags" ng-click="hashTag=tag.text">#{{tag.text}} </span>
                         </div>
                     </div>
                 </div>
