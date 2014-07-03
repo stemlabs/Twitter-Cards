@@ -5,3 +5,6 @@
 /VisualStudio/TwitterCards/TwitterCards.csproj.user
 *.suo
 *.cache
+/obj/Debug
+/bin
+*.user
