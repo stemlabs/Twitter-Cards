@@ -42,11 +42,17 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">{{ tweet.text }}</div>
                             <div class="panel-body">
-                                <a ng-href="{{ tweet.user.url }}">By {{tweet.user.name}}</a>
+                                <p>
+                                    <a class="text-left" ng-href="{{ tweet.user.url }}">By {{tweet.user.name}} </a>
+                                    As {{tweet.user.screen_name}}
+                                </p>
                                 <div>
-                                    <h6>
-                                        Location: {{tweet.user.location}}                                   
-                                    </h6>
+                                    <p class="text-left">
+                                        Location: {{tweet.user.location}}
+                                    </p>
+                                </div>
+                                <div>
+                                    Hashtags: #{{tweet.entities.hashtags.text}}
                                 </div>
                             </div>
                         </div>
