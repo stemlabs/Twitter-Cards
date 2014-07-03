@@ -2,6 +2,7 @@
 <html ng-app="demoApp">
 <head>
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" data-require="bootstrap-css@3.1.1" data-semver="3.1.1" />
+    <!--add twitter data-->
 
 
 </head>
@@ -25,7 +26,7 @@
             <div class="navbar-header">
                 <div class="btn-group" style="position:relative;top:12px">
                     <input type="text" ng-model="hashTag" />
-                     <button ng-click="sync()"><font color="4099FF"><span class="glyphicon glyphicon-refresh"></span> Sync</font></button>
+                    <button ng-click="sync()"><font color="4099FF"><span class="glyphicon glyphicon-refresh"></span> Sync</font></button>
                 </div>
     </nav>
 
@@ -42,17 +43,17 @@
                             <div class="panel-heading">{{ tweet.text }}</div>
                             <div class="panel-body">
                                 <p>
-                                    <a class="text-left" ng-href="{{ tweet.user.url }}">By {{tweet.user.name}} </a>
+                                    <a class="text-left" ng-href="{{ tweet.user.url }}"><font color="24558F">By</font> {{tweet.user.name}} </a>
                                     As {{tweet.user.screen_name}}
                                 </p>
                                 <div>
                                     <p class="text-left">
-                                        Location: {{tweet.user.location}}
+                                        <font color="24558F">Location:</font> {{tweet.user.location}}
                                     </p>
                                 </div>
                                 <div>
-                                    Hashtags: <span ng-repeat="tag in tweet.entities.hashtags" ng-click="hashTag=tag.text">#{{tag.text}}</span>
-                                                              </div>
+                                    <font color="24558F"> Hashtags:</font> <span ng-repeat="tag in tweet.entities.hashtags" ng-click="hashTag=tag.text">#{{tag.text}}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
