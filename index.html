@@ -43,6 +43,11 @@
                             <div class="panel-heading">{{ tweet.text }}</div>
                             <div class="panel-body">
                                 <a ng-href="{{ tweet.user.url }}">By {{tweet.user.name}}</a>
+                                <div>
+                                    <h6>
+                                        Location: {{tweet.user.location}}                                   
+                                    </h6>
+                                </div>
                             </div>
                         </div>
                     </div>
