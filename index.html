@@ -2,12 +2,16 @@
 <html ng-app="demoApp">
 <head>
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" data-require="bootstrap-css@3.1.1" data-semver="3.1.1" />
+    <!--add twitter data-->
+
+
 </head>
 
 <body ng-controller="demoController">
 
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
+
             <div class="navbar-header">
                 <a class="navbar-brand" href="#"> <font color="4099FF">Twitter Cards</font> </a>
                 <button id="button-nav-group" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -15,6 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
+
                 </button>
             </div>
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -29,6 +34,7 @@
     {{ errorMessage }}
 
     <div>
+
         <div ng-container="">
             <div class="row">
                 <div ng-repeat="tweet in tweets">
@@ -37,16 +43,16 @@
                             <div class="panel-heading">{{ tweet.text }}</div>
                             <div class="panel-body">
                                 <p>
-                                    <a class="text-left" ng-href="{{ tweet.user.url }}">By {{tweet.user.name}} </a>
+                                    <a class="text-left" ng-href="{{ tweet.user.url }}"><font color="24558F">By</font> {{tweet.user.name}} </a>
                                     As {{tweet.user.screen_name}}
                                 </p>
                                 <div>
                                     <p class="text-left">
-                                        Location: {{tweet.user.location}}
+                                        <font color="24558F">Location:</font> {{tweet.user.location}}
                                     </p>
                                 </div>
                                 <div>
-                                    Hashtags: <span ng-repeat="tag in tweet.entities.hashtags" ng-click="hashTag=tag.text">#{{tag.text}} </span>
+                                    <font color="24558F"> Hashtags:</font> <span ng-repeat="tag in tweet.entities.hashtags" ng-click="hashTag=tag.text">#{{tag.text}}</span>
                                 </div>
                             </div>
                         </div>
@@ -54,6 +60,7 @@
                 </div>
             </div>
         </div>
+
 
         <script src="https://code.jquery.com/jquery-2.0.3.min.js" data-require="jquery@*" data-semver="2.0.3"></script>
         <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" data-require="bootstrap@3.1.1" data-semver="3.1.1"></script>
@@ -81,6 +88,7 @@
                             });
                         });
                     }
+
 
                     dataService.addSource(twitterDataService);
                     dataService.connect(function (results) {
