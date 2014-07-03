@@ -4,3 +4,4 @@
 
 /VisualStudio/TwitterCards/TwitterCards.csproj.user
 *.suo
+*.cache
