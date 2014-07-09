@@ -8,3 +8,6 @@
 /obj/Debug
 /bin
 *.user
+/VisualStudio/TwitterCards/obj/Debug
+/VisualStudio/TwitterCards/bin
+/VisualStudio/TwitterCards
