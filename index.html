@@ -11,7 +11,7 @@
         <div class="container-fluid">
 
             <div class="navbar-header">
-                <a class="navbar-brand" href="#"> <font color="4099FF" size="">Twitter Cards</font> </a> 
+                <a class="navbar-brand" href="#"> <font color="00c6ff" size="">Twitter Cards</font> </a>
                 <button id="button-nav-group" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -23,80 +23,96 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <div class="btn-group" style="position:relative;top:12px">
-                    <input type="text" ng-model="hashTag" placeholder="Hashtag Search"/>
-                    <button ng-click="sync()"><font color="4099FF" ><span class="glyphicon glyphicon-search"></span> Search</font></button>
+                    <input type="text" ng-model="hashTag" placeholder="Hashtag search" />
+                    <button ng-click="sync()"><font color="00c6ff"><span class="glyphicon glyphicon-search"></span> Search</font></button>
                 </div>
     </nav>
     {{ errorMessage }}
     <div>
-
-        <div ng-container="">
+        <div ng-container="" class="js-masonry" data-masonry-options='{ "columnWidth": 200, "itemSelector": ".item" }'>
             <div class="row">
-                <div ng-repeat="tweet in tweets">
-                    <div class="col-sm-6 col-md-4 col-lg-2">
-                        <div class="panel panel-default">
-                            <div class="panel-heading" style="background-color: #75b5ff">
-                                <p>
-                                    <a class="text-left" ng-href="{{ tweet.user.url }}"><font color="FFFFFF" size="4" font_family="Helvetica">By {{tweet.user.name}}</a>
-                                    as {{tweet.user.screen_name}}</font> 
-                                </p>
-                            </div>
-                            <div class="panel-body">
-                                {{tweet.text}}
-                            </div>
-                            <div class="panel-footer">
-                                <div>
-                                    <p class="text-left">
-                                        <font color="24558F">Location:</font> {{tweet.user.location}}
+                <div id="container">
+                    <div ng-repeat="tweet in tweets">
+                        <div class="col-sm-4 col-md-4 col-lg-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" style="background-color: #49d6ff">
+                                    <p>
+                                        <font color="fffffff" size="4" font_family="Helvetica">By <a class="text-left" ng-href="{{ tweet.user.url }}">{{tweet.user.name}}</a> as {{tweet.user.screen_name}}</font>
                                     </p>
                                 </div>
-                                <font color="24558F"> Hashtags:</font><span ng-repeat="tag in tweet.entities.hashtags" ng-click="hashTag=tag.text">#{{tag.text}} </span>
+                                <div class="panel-body">
+                                    {{tweet.text}}
+                                </div>
+                                <div class="panel-footer">
+                                    <div>
+                                        <p class="text-left">
+                                            <font color="24558F">Location:</font> {{tweet.user.location}}
+                                        </p>
+                                    </div>
+                                    <font color="24558F"> Hashtags:</font><span ng-repeat="tag in tweet.entities.hashtags" ng-click="hashTag=tag.text">#{{tag.text}} </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
+                <script src="jquery-1.7.1.min.js"></script>
+                <script src="jquery.masonry.min.js"></script>
+                <script>
+                    $(function () {
 
-        <script src="https://code.jquery.com/jquery-2.0.3.min.js" data-require="jquery@*" data-semver="2.0.3"></script>
-        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" data-require="bootstrap@3.1.1" data-semver="3.1.1"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js" data-require="angular.js@1.2.17" data-semver="1.2.17"></script>
-        <script src="//acdccdn.blob.core.windows.net/cdn/ajax/acdc/0.3/AngularCloudDataConnector.js"></script>
-        <script src="//acdccdn.blob.core.windows.net/cdn/ajax/acdc/0.3/Providers/TwitterService.js"></script>
+                        var $container = $('#container');
 
-        <script>
-            var app = angular.module('demoApp', ['DataModule', 'TwitterDataModule']);
-            app.controller('demoController', ['$scope', 'dataService', 'twitterDataService',
-                function ($scope, dataService, twitterDataService) {
-                    $scope.sync = function () {
-                        twitterDataService.HashTag = $scope.hashTag;
-
-                        $scope.errorMessage = 'Loading...';
-
-                        dataService.sync(function () {
-                            dataService.getEntries(function (results) {
-                                // Update view
-                                $scope.errorMessage = '';
-
-                                for (var result in results) {
-                                    $scope.$apply($scope[result] = results[result]);
-                                }
+                        $container.imagesLoaded(function () {
+                            $container.masonry({
+                                itemSelector: '.itemSelector'
                             });
                         });
-                    }
 
-
-                    dataService.addSource(twitterDataService);
-                    dataService.connect(function (results) {
-                        //sync after the initial response
-                        for (var result in results) {
-                            $scope.$apply($scope[result] = results[result]);
-                        }
                     });
+                </script>
+            </div>
 
-                }]);
 
-        </script>
+            <script src="https://code.jquery.com/jquery-2.0.3.min.js" data-require="jquery@*" data-semver="2.0.3"></script>
+            <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" data-require="bootstrap@3.1.1" data-semver="3.1.1"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js" data-require="angular.js@1.2.17" data-semver="1.2.17"></script>
+            <script src="//acdccdn.blob.core.windows.net/cdn/ajax/acdc/0.3/AngularCloudDataConnector.js"></script>
+            <script src="//acdccdn.blob.core.windows.net/cdn/ajax/acdc/0.3/Providers/TwitterService.js"></script>
+
+            <script>
+                var app = angular.module('demoApp', ['DataModule', 'TwitterDataModule']);
+                app.controller('demoController', ['$scope', 'dataService', 'twitterDataService',
+                    function ($scope, dataService, twitterDataService) {
+                        $scope.sync = function () {
+                            twitterDataService.HashTag = $scope.hashTag;
+
+                            $scope.errorMessage = 'Loading...';
+
+                            dataService.sync(function () {
+                                dataService.getEntries(function (results) {
+                                    // Update view
+                                    $scope.errorMessage = '';
+
+                                    for (var result in results) {
+                                        $scope.$apply($scope[result] = results[result]);
+                                    }
+                                });
+                            });
+                        }
+
+
+                        dataService.addSource(twitterDataService);
+                        dataService.connect(function (results) {
+                            //sync after the initial response
+                            for (var result in results) {
+                                $scope.$apply($scope[result] = results[result]);
+                            }
+                        });
+
+                    }]);
+
+            </script>
 
 </body>
 </html>
